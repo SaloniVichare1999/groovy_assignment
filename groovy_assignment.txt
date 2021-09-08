@@ -1,0 +1,264 @@
+1. Number Data Types
+
+a. What data type is the number 2? How about 20? 200? Keep adding zeros and watch the data type change until it reaches BigInteger. Then do the same for 2.0.
+ans- for 2 data type is Integer. for 20 and 200 also data type is integer, from 20000000000000000000 from 19th place data  type change to BigInteger till 18 its iinteger or long integer.
+for any float float value data type is BigDecimal. 
+	
+
+b. Declare a variable x of type def and assign it the sum of 1 and 1.5. What is the resulting data type?
+ans- result is 2.5 and data type is BigDecimal.
+
+
+c. What do you get when you divide 5 by 2? What is the resulting data type? If you wanted to do integer division (no remainder), what method would you call?
+ans- 5/2=2.5 and data type is BigDecimal. for integer division we need to call method '().indiv()'. 
+example- using intdiv
+def x = 26
+def y = 10
+def resultIntDiv = x.intdiv(y)
+println = resultIntDiv
+
+2. Wrapper Classes
+
+From the associated wrapper classes, find the min and max values for the Java primitives: byte, short, int, long, float, double.
+ans- byte b = -127 to 127  short s = -32767 to 32767 int i = -2147483647 to 2147483647 long l = -9223372036854775807 to 9223372036854775807 float f = 1.4E-45 to 3.4028235E38 double d= 4.9E-324 to 1.7976931348263157E308
+
+3. 2s Complement
+
+Create a byte variable with its maximum value. What do you get when you add 1 to it?
+ans- maximum byte value of any byte variable is 127 and its 2s complement is 0000001.
+byte b= 20
+println b
+println Byte.MAX_VALUE
+println Integer.toBinaryString(127)
+ 
+
+
+4. Strings and GroovyStrings
+
+a. How many characters are in the string "Hello, Groovy!"?
+ans- 13 characters the one present between “ ”
+
+b. Define a string variable containing a name. Print a hello statement with your name using string concatenation, then using a Groovy string.
+ans- def name= "saloni"
+     println "my name is" +name
+     println "my name is" .concat(name)
+
+c. Demonstrate that "racecar" is a palindrome by comparing it to its reverse. Do the same with "Bob", removing case sensitivity first.
+ans-  
+
+def word = "racecar"  
+def checkDone;  
+
+String reverse="";  
+      int len = word.size(); 
+
+      for ( int i = len – 1; i >= 0; i– ){  
+
+         reverse = reverse + word.charAt(i);  
+
+      }  
+
+     if(word.equalsIgnoreCase(reverse)){  
+
+        checkDone = “The String  “ +word+ ” is a palindrome” ;     
+
+     }else{  
+
+        checkDone = “The String “ +word+ ” is not a palindrome”;    
+
+     }  
+
+println(checkDone )
+
+d. Define a string variable containing the sentence, "Hello, World. How are you?". Split the sentence into an array using the split method. Count the number of words. Do the same using the tokenize method.
+ans-
+String line = "Hello, World. How are you?"; 
+String[] currencies = line.split(" ")
+println("output string: " + Arrays.toString(currencies));
+println("no of words in array:"+ currencies.size());
+def sampleText = "Hello, World. How are you?"
+println sampleText.tokenize("-")
+
+e. Using the same sentence, use array notation (square brackets) to print the substring "World".
+ans-
+
+def lst = "Hello, World. How are you?"
+println lst[7..11]
+ 
+f. Use array notation to print the last word, but reversed.
+ans-
+def stringWithWords ="Hello, World. How are you"
+def splitWords = stringWithWords.split()
+def splitLastWord = splitWords[splitWords.length-1]
+println "${splitLastWord}"
+def a= splitLastWord.reverse()
+println "$a"
+
+5. Prime Numbers
+
+Write a method called isPrime that takes an integer argument and returns a boolean. Determine whether the number is prime by dividing it by all numbers from 2 up to one less than the number.
+[19:19] Tambe, Urvi Jagadish
+    def isPrime(){​​​​​​​
+    def n=13
+    int flag=0
+    int m=n/2
+     if(n==0||n==1){​​​​​​​
+println("$n"+" is not prime number");   
+  }​​​​​​​
+  else
+  {​​​​​​​
+   for(i=2;i<=m;i++)
+   {​​​​​​​   
+    if(n%i==0)
+    {​​​​​​​   
+    println("$n"+" is not prime number");   
+     flag=1;   
+     break;   
+    }​​​​​​​   
+   }​​​​​​​   
+   if(flag==0)  {​​​​​​​ println(n+" is prime number"); }​​​​​​​
+  }​​​​​​​
+}​​​​​​​
+isPrime()
+
+That limit is too high, of course. How high do you have to check to be sure whether you've gone far enough?
+ans- we have tto check till half the number.
+
+1. Sorting Strings
+
+Create a list of strings. Sort them alphabetically. Sort them by length. Sort them by length in descending order.
+ans- def word= ['groovy' , 'classes' , 'tutorial']
+	word.sort()
+	println "word list sorted alphabetically:  $word"
+	word.sort{it -> it.length()}
+	println "list sorted by their lenght in ascending order: $word"
+	word.sort{it -> -it.length()}
+	println "list sorted by their lenght in descending order: $word"
+
+Advanced: Sort by length, then sort equal length strings alphabetically
+
+2. Processing a list of numbers
+
+Create a list of numbers. Add them together. First double each number, then add them up. Compute their average.
+ans- 
+def lst = [13, 12, 15, 14];
+println "old list is : $lst "
+def sum=lst.sum()
+println"sum of elements: $sum"
+def newlst= lst.collect { it * 2 }
+println "new list is: $newlst"
+def doublelst = lst.sum {it * 2}
+println "sum of elements: $doublelst"
+avg= newlst.average()
+println "averge is: $avg"
+
+3. Reading a web page
+
+Using the Groovy JDK, access your home page and display the source code. Print the length of each line of the home page.
+ans- 
+String filepath = "C:\Users\sieanna\Assignments\groovy"
+File myfile = new File(filepath)
+myFile.withReader {reader->
+    while((line=reader.readLine())!= null){
+        println"$line""
+        println line.length()
+    }
+}
+
+4. Closures as a filter
+
+Create a list of numbers. Print all elements greater than zero.
+ans-
+def l1 = [10,-1,2,45,-56]
+for (i=0; i<=l1.size();i++)
+{
+def a= l1.get(i)
+if (a>0)
+    {println "$a"}
+
+ 
+
+}
+
+5. Multi-line strings
+
+Make a multi-line string. Compute the number of vowels on each line.
+
+6. Padded binary output
+
+Print the numbers from 0 to 15 in binary (use Java's Integer.toBinaryString() method). Use a method in String from the Groovy JDK to make all the output values have four digits.
+ans- 
+    for(int i=1; i <= 15; i++ )
+{​​​​​​​
+ String result= Integer.toBinaryString(i)
+ String resultWithPadding = String.format("%4s", result).replaceAll(" ", "0")
+ println resultWithPadding
+
+}​​​​​​​
+
+
+1. Encode and decode
+
+i.Create two strings, one for a username and one for a password. Concatenate them together, separated by a colon. Use a method from the Groovy JDK to convert the resulting String to a byte array. Then use the encodeBase64 method on byte array to create an encoded string.
+
+ii.Decode the string by using the decodeBase64 method, and using the result as an argument to the String constructor. Use the split method to return the original username and password.
+ans-
+
+package assignment
+String username = "salonivichare"
+String password = "sv123"
+def man = username+":"+password
+println man
+String encoded = man.bytes.encodeBase64().toString()
+println "after encoding $encoded"
+byte[] decoded = encoded.decodeBase64()
+println  new String (decoded)
+String s = new String (decoded)
+String[] temp;
+String delimeter = ":"; 
+temp = s.split(delimeter);
+String username1 = temp[0];
+String password2 = temp[1]
+println "original username: " +username1
+println "original password: " +password2
+
+
+2. Sorting a list
+
+Create a class called Course, with a String attribute called name and an int attribute called days. Create a list of four course instances, where at least two have the same number of days. Sort the list by number of days. Then, sort the list by days, but when the days are equal, sort by name.
+ans-
+
+    
+package assignment
+
+
+class course {​​​​​​​
+    String name
+    int days
+    def getvalues(String n, int d)
+    {​​​​​​​
+        def name = n
+        def days = d
+        def l = [name:n,days:d]
+        
+    }​​​​​​​
+    static void main(args) {​​​​​​​
+        course First=new course()
+        course Second=new course()
+        course Third=new course()
+        course Fourth=new course()
+        
+        def common = [First.getvalues('jeh', 26), Second.getvalues('viaan', 30), Third.getvalues('lina', 30), Fourth.getvalues('kimm', 35)]
+        def sort = common.sort{​​​​​​​a, b -> b["days"] <=> a["days"] ?: a["name"] <=> b["name"]}​​​​​​​
+        sort. each {​​​​​​​println it}​​​​​​​
+    }​​​​​​​
+}​​​​​​​
+
+
+
+
+3. Operator overloading
+
+i.Create a class called Money with a double amount and a String currency (like USD or EUR). Implement a plus method that checks that the currencies are the same and, if so, returns a new Money instance with the sum of the amounts and the correct currency. Write a similar minus method.
+
+ii.Write a MoneyTest class in Groovy that uses + and - and verifies that they
